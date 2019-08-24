@@ -35,3 +35,15 @@ revBtn = web.find_element_by_css_selector("div.tk_dt_btn_TArea > a").click()
 
 # 팝업창 전환
 web.switch_to.window(web.window_handles[1])
+
+nextStepBtn = web.find_element_by_id("LargeNextBtnImage").click()
+
+# seat > captcha 접기 > seatDetail iframe 으로 변경
+web.switch_to.frame(web.find_element_by_id("ifrmSeat"))
+web.find_element_by_css_selector("div#divCaptchaFolding > a").click()
+web.switch_to.frame(web.find_element_by_id("ifrmSeatDetail"))
+
+# 좌석 선택 후 상위 프레임 이동, 다음 단계 클릭
+web.find_element_by_css_selector("img.stySeat").click()
+web.switch_to.parent_frame()
+web.find_element_by_css_selector("div.btnWrap > a").click()
